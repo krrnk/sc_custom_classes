@@ -1,7 +1,7 @@
 TITLE:: KSubsets
 summary:: Find all subsets (combinations) size K from a collection. 
 categories:: Collections>Unordered 
-related:: Classes/List, Classes/Set 
+related:: Classes/Collection, Classes/Set
 
 DESCRIPTION::
 Returns all possible combinations of specific size (K) of the collection elements. 
@@ -13,7 +13,7 @@ Kozak, S. (2014). power set algorithms. Retrieved from https://sevko.io/articles
 CLASSMETHODS::
 
 METHOD:: new
-Creates a new List containing all the possible combinations of the collection elements.
+Creates a new Set containing all the possible combinations of the collection elements.
 
 ARGUMENT:: k
 Size of the subsets.
@@ -21,7 +21,7 @@ Size of the subsets.
 ARGUMENT:: set
 The collection to extract the subsets from.
 
-returns:: a List.
+returns:: a Set.
 
 INSTANCEMETHODS::
 
@@ -32,9 +32,9 @@ EXAMPLES::
 code::
 a = [1, 2, 3, 4, 5, 6];
 
-KSubsets(2, a); // List[ [ 2, 1 ], [ 3, 1 ], [ 4, 1 ], [ 5, 1 ], [ 6, 1 ], [ 3, 2 ], [ 4, 2 ], [ 5, 2 ], [ 6, 2 ], [ 4, 3 ], [ 5, 3 ], [ 6, 3 ], [ 5, 4 ], [ 6, 4 ], [ 6, 5 ] ]
+KSubsets(2, a); // Set[ [ 2, 1 ], [ 3, 1 ], [ 4, 1 ], [ 5, 1 ], [ 6, 1 ], [ 3, 2 ], [ 4, 2 ], [ 5, 2 ], [ 6, 2 ], [ 4, 3 ], [ 5, 3 ], [ 6, 3 ], [ 5, 4 ], [ 6, 4 ], [ 6, 5 ] ]
 
-KSubsets(5, a); // List[ [ 5, 4, 3, 2, 1 ], [ 6, 4, 3, 2, 1 ], [ 6, 5, 3, 2, 1 ], [ 6, 5, 4, 2, 1 ], [ 6, 5, 4, 3, 1 ], [ 6, 5, 4, 3, 2 ] ]
+KSubsets(5, a); // Set[ [ 5, 4, 3, 2, 1 ], [ 6, 4, 3, 2, 1 ], [ 6, 5, 3, 2, 1 ], [ 6, 5, 4, 2, 1 ], [ 6, 5, 4, 3, 1 ], [ 6, 5, 4, 3, 2 ] ]
 
 // Collection methods are valid
 KSubsets(3, a).asArray; // [ [ 3, 2, 1 ], [ 4, 2, 1 ], [ 5, 2, 1 ], [ 6, 2, 1 ], [ 4, 3, 1 ], [ 5, 3, 1 ], [ 6, 3, 1 ], [ 5, 4, 1 ], [ 6, 4, 1 ], [ 6, 5, 1 ], [ 4, 3, 2 ], [ 5, 3, 2 ], [ 6, 3, 2 ], [ 5, 4, 2 ], [ 6, 4, 2 ], [ 6, 5, 2 ], [ 5, 4, 3 ], [ 6, 4, 3 ], [ 6, 5, 3 ], [ 6, 5, 4 ] ] 

@@ -3,14 +3,14 @@ SuperCollider class for finding all possible subsets of size K
 Translation from the Python implementation by Severyn Kozak in https://sevko.io/articles/power-set-algorithms/
 */
 
-KSubsets : List {
+KSubsets : Collection {
 
 	*new { arg k, set;
 		^super.new.find(k, set);
 	}
 
 	find { arg k, set;
-		var subsets = List(0);
+		var subsets = Set(0);
 
 		^if(k == 0, {
 			[[]];
