@@ -6,7 +6,7 @@ Translation from the Python implementation by Severyn Kozak in https://sevko.io/
 KSubsets : Collection {
 
 	*new { arg k, set;
-		^super.new.find(k, set);
+		^super.new.find(k, set.flat);
 	}
 
 	find { arg k, set;
