@@ -1,10 +1,10 @@
 CartesianDistance : KSubsets {
 
-	*new { arg axisPairsArray;
-		^this.get(axisPairsArray)
+	*new { arg coordsArray, getDistance = true, getAverage = false;
+		^this.get(coordsArray, getDistance, getAverage)
 	}
 
-	*get { arg axisPairsArray;
+	*calculate { arg axisPairsArray;
 		var distance = Array.newClear(axisPairsArray.size);
 
 		axisPairsArray.do{ arg item, i;
@@ -13,7 +13,7 @@ CartesianDistance : KSubsets {
 			distance[i].do{ arg set, j; distance[i][j] = set.asArray.reduce('-') ** 2 };
 		};
 
-		distance = distance.lace(distance.size * distance[0].size).reshape(axisPairsArray.size, distance[0].size);
+		distance = distance.flop;
 
 		distance.do{ arg item, i; distance[i] = sqrt(distance[i].sum) };
 
@@ -21,18 +21,18 @@ CartesianDistance : KSubsets {
 	}
 
 	*average {arg axisPairsArray;
-		var distance = this.get(axisPairsArray);
+		var distance = this.calculate(axisPairsArray);
 		^ distance.sum / distance.size;
 	}
 
-	*groupByAxis { arg dimensions, coordsArray, getDistance = false, getAverage = false;
+	*get { arg coordsArray, getDistance = true, getAverage = false;
 
-		var grouped = coordsArray.lace(coordsArray.size * dimensions).reshape(dimensions, coordsArray.size);
+		var grouped = coordsArray.flop;
 
 		^if(getDistance == true, {
 			if(getAverage == true, { "WARNING: getDistance must be false to return getAverage".postln });
 
-			this.get(grouped);
+			this.calculate(grouped);
 
 		}, {
 			if(getAverage == true, { this.average(grouped) }, { grouped })
