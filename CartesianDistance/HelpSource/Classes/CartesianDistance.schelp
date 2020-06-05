@@ -1,0 +1,49 @@
+TITLE:: CartesianDistance 
+summary:: Returns the distance between N cartesian points in a space. 
+categories:: Geometry  
+related:: Classes/Point, Classes/Cartesian, Classes/CartesianArray
+
+DESCRIPTION::
+Returns the distance or average distance between two or more cartesian coordinates in any dimension. 
+This class is similar to the Cartesian.dist of the MathLib Quark, but offers the possibility to calculate multiple points or different cartesian dimensions at once.  
+
+CLASSMETHODS::
+
+METHOD:: new 
+Returns an Array of distances OR the average distance between 2 or more cartesian points.
+
+ARGUMENT:: coordsArray
+Array of coordinate points.
+3D example: [[X1, Y1, Z1], [X2, Y2, Z2], ..., [Xn, Yn, Zn]]
+
+ARGUMENT:: getDistance
+A boolean.
+True by default.
+If true, it will return an array of distances between the cartesian points.
+
+ARGUMENT:: getAverage
+A boolean.
+It will return the average distance of all points as a float.
+
+NOTE:: getAverage is not possible if getDistance is true. 
+::
+
+RETURNS:: An Array. A float in the case of getAverage.
+
+CODE::
+(
+~coord1 = Array.rand(3, 0.0, 1.0);
+~coord2 = Array.rand(3, 0.0, 1.0);
+~coord3 = Array.rand(3, 0.0, 1.0);
+)
+
+CartesianDistance.groupByAxis(3, [~coord1, ~coord2, ~coord3], true, false);
+CartesianDistance.groupByAxis(3, [~coord1, ~coord2, ~coord3], false, true);
+CartesianDistance.groupByAxis(3, [~coord1, ~coord2, ~coord3], false, false); // returns the coordinates grouped by axis. Same as coordsArray.flop.
+::
+
+PRIVATE:: get
+
+PRIVATE:: calculate
+
+PRIVATE:: average
